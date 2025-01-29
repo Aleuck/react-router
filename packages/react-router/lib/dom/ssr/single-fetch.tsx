@@ -405,8 +405,8 @@ export function singleFetchUrl(reqUrl: URL | string) {
         )
       : reqUrl;
 
-  if (url.pathname === "/") {
-    url.pathname = "_root.data";
+  if (url.pathname === (__reactRouterContext?.basename || "/")) {
+    url.pathname = `${__reactRouterContext?.basename || ""}_root.data`;
   } else {
     url.pathname = `${url.pathname.replace(/\/$/, "")}.data`;
   }
